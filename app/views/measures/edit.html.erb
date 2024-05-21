@@ -1,0 +1,94 @@
+<div class="container mt-5">
+  <div class="card">
+    <div class="card-header">
+      <h1>Editar Medidas</h1>
+    </div>
+    <div class="card-body">
+      <%= form_with(model: @measure, local: true) do |form| %>
+        <% if @measure.errors.any? %>
+          <div id="error_explanation" class="alert alert-danger">
+            <h4><%= pluralize(@measure.errors.count, "error") %> prohibieron que estas medidas se guardaran:</h4>
+            <ul>
+              <% @measure.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <div class="mb-3">
+          <%= form.label :full_name, "Nombre completo", class: 'form-label' %>
+          <%= form.text_field :full_name, class: 'form-control' %>
+        </div>
+
+        <div class="mb-3">
+          <%= form.label :age, "Edad", class: 'form-label' %>
+          <%= form.number_field :age, class: 'form-control' %>
+        </div>
+
+        <div class="mb-3">
+          <%= form.label :height, "Altura", class: 'form-label' %>
+          <%= form.number_field :height, step: :any, class: 'form-control' %>
+        </div>
+
+        <div class="mb-3">
+          <%= form.label :chest, "Pecho (cm)", class: 'form-label' %>
+          <p>Mide alrededor de la parte más sobresaliente de tu busto. La cinta de medir debe formar una circunferencia debajo de los brazos y sobre los omóplatos. Debe estar paralela al suelo y sostenerse sin presión.</p>
+          <%= form.number_field :chest, step: :any, class: 'form-control' %>
+        </div>
+
+        <div class="mb-3">
+          <%= form.label :hip, "Cadera (cm)", class: 'form-label' %>
+          <p>Mide alrededor de la parte más prominente de los glúteos. Una vez más, la cinta de medir debe mantenerse paralela al suelo y sostenerse sin presión.</p>
+          <%= form.number_field :hip, step: :any, class: 'form-control' %>
+        </div>
+
+        <div class="mb-3">
+          <%= form.label :waist, "Cintura (cm)", class: 'form-label' %>
+          <p>Mide alrededor de tu cintura natural, es decir, la parte más angosta del torso, rodeando el abdomen y la espalda. La cinta de medir debe ubicarse paralela al suelo y sostenerse sin presión.</p>
+          <%= form.number_field :waist, step: :any, class: 'form-control' %>
+        </div>
+
+        <div class="mb-3">
+          <%= form.label :arm, "Brazo (cm)", class: 'form-label' %>
+          <p>Mide desde el acromion (el hueso que tiende a sobresalir al final del hombro), hasta justo debajo de la cabeza del cúbito (hueso prominente de la muñeca), siguiendo el contorno exterior del brazo, pasando por el codo.</p>
+          <%= form.number_field :arm, step: :any, class: 'form-control' %>
+        </div>
+
+        <div class="mb-3">
+          <%= form.label :tlength, "Largo de talle (cm)", class: 'form-label' %>
+          <p>El largo de talle se mide desde el punto más alto del hombro (HPS), donde se une con el cuello, hasta la cintura. Para hacer esto, coloca un extremo de la cinta métrica en el HPS, luego lleva la cinta métrica hacia abajo, pasando por la parte más prominente del busto, hasta llegar a tu cintura. Asegúrate de que la cinta métrica esté en contacto con tu cuerpo todo el tiempo y que esté paralela al suelo cuando llegue a tu cintura.</p>
+          <%= form.number_field :tlength, step: :any, class: 'form-control' %>
+        </div>
+
+        <div class="mb-3">
+          <%= form.label :inseam, "Entrepierna (cm)", class: 'form-label' %>
+          <p>Quítate los zapatos y párate con las piernas ligeramente separadas. Mide desde el punto más alto del muslo (debajo de la línea de la entrepierna) hasta el suelo, siguiendo la forma natural de la pierna interior.</p>
+          <%= form.number_field :inseam, step: :any, class: 'form-control' %>
+        </div>
+
+        <div class="mb-3">
+          <%= form.label :leglength, "Longitud de pierna (cm)", class: 'form-label' %>
+          <p>Para medir el largo de tu pierna, mide desde la parte superior de tu pierna interior hasta el suelo.</p>
+          <%= form.number_field :leglength, step: :any, class: 'form-control' %>
+        </div>
+
+        <div class="mb-3">
+          <%= form.label :thighwidth, "Ancho de muslo (cm)", class: 'form-label' %>
+          <p>Para medir el ancho de tu muslo, mide alrededor de la parte más ancha de tu muslo.</p>
+          <%= form.number_field :thighwidth, step: :any, class: 'form-control' %>
+        </div>
+
+        <div class="mb-3">
+          <%= form.label :backwidth, "Ancho de espalda (cm)", class: 'form-label' %>
+          <p>Para medir el ancho de tu espalda, mide horizontalmente entre tus puntos de unión del brazo (debajo de la axila).</p>
+          <%= form.number_field :backwidth, step: :any, class: 'form-control' %>
+        </div>
+        
+        <div class="actions">
+          <%= form.submit 'Actualizar Medidas', class: 'btn btn-primary' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

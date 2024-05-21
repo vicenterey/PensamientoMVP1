@@ -1,0 +1,40 @@
+<div class="container mt-5">
+  <div class="jumbotron">
+    <% if user_signed_in? %>
+
+      <% if current_user.measures.any? %>
+        <h1>Hola, <%= current_user.measures.first.full_name %></h1>
+        <h2 class="mt-4">Tus Medidas</h2>
+        <% current_user.measures.each do |measure| %>
+          <div class="card mb-3">
+            <div class="card-body">
+              <p class="card-text"><strong>Edad:</strong> <%= measure.age %></p>
+              <p class="card-text"><strong>Altura:</strong> <%= measure.height %> cm</p>
+              <p class="card-text"><strong>Pecho:</strong> <%= measure.chest %> cm</p>
+              <p class="card-text"><strong>Cadera:</strong> <%= measure.hip %> cm</p>
+              <p class="card-text"><strong>Cintura:</strong> <%= measure.waist %> cm</p>
+              <p class="card-text"><strong>Brazo:</strong> <%= measure.arm %> cm</p>
+              <p class="card-text"><strong>Longitud total:</strong> <%= measure.tlength %> cm</p>
+              <p class="card-text"><strong>Entrepierna:</strong> <%= measure.inseam %> cm</p>
+              <p class="card-text"><strong>Longitud de pierna:</strong> <%= measure.leglength %> cm</p>
+              <p class="card-text"><strong>Ancho de muslo:</strong> <%= measure.thighwidth %> cm</p>
+              <p class="card-text"><strong>Ancho de espalda:</strong> <%= measure.backwidth %> cm</p>
+              <%= link_to 'Editar', edit_measure_path(measure), class: 'btn btn-secondary' %>
+            </div>
+          </div>
+        <% end %>
+      <% else %>
+        <h3 class="display-4">Bienvenido a MVP</h3>
+        <p>No has ingresado tus medidas.</p>
+        <p class="lead">
+            <%= link_to 'Ingresar Medidas', new_measure_path, class: 'btn btn-primary btn-lg' %>
+        </p>
+      <% end %>
+    <% else %>
+      <p class="lead">
+        <%= link_to 'Registrarse', new_user_registration_path, class: 'btn btn-success btn-lg' %> o 
+        <%= link_to 'Iniciar sesión', new_user_session_path, class: 'btn btn-info btn-lg' %>
+      </p>
+    <% end %>
+  </div>
+</div>
